@@ -11,16 +11,17 @@ import {
   useNodesState
 } from "reactflow";
 import Square from 'components/nodes/Square';
-import DefaultEdge from 'components/edges/DefaultEdge';
+import DefaultEdge from 'components/edges/Default';
 import Toolbar from 'components/Toolbar';
+import Circle from 'components/nodes/Circle';
 
 function Playground(){
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [shouldPanOnDrag, setShouldPanOnDrag] = React.useState<boolean>(true);
+  const [shouldPanOnDrag, setShouldPanOnDrag] = React.useState<boolean>(false);
   const [hasNodeInteraction, setHasNodeInteraction] = React.useState<boolean>(true);
 
-  const nodeType = React.useMemo(() => ({square: Square}),[]);
+  const nodeType = React.useMemo(() => ({square: Square, circle: Circle}),[]);
   const edgeType = React.useMemo(() => ({default: DefaultEdge}),[]);
 
   const onConnect = React.useCallback((connection: Connection) => {
@@ -48,6 +49,8 @@ function Playground(){
         <Toolbar 
           nodes={nodes}
           setNodes={setNodes}
+          setHasNodeInteraction={setHasNodeInteraction}
+          setShouldPanOnDrag={setShouldPanOnDrag}
         />
       </div>
     </RoomProvider>
