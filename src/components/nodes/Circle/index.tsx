@@ -3,10 +3,10 @@ import { Handle, Position } from "reactflow";
 import './styles.css';
 import '@reactflow/node-resizer/dist/style.css';
 
-function Square({data}:any) {
+function Circle({data}:any) {
   return (
     <>
-      <div className="min-w-[200px] min-h-[200px] w-full h-full bg-emerald-400 rounded-xl group"/>
+      <div className="min-w-[200px] min-h-[200px] w-full h-full bg-emerald-400 rounded-full group"/>
       <NodeResizer
         minHeight={200}
         minWidth={200}
@@ -16,28 +16,28 @@ function Square({data}:any) {
         id="top" 
         type="source" 
         position={Position.Top}
-        className="handler"
+        className="handler -my-2"
       />
       <Handle 
         id="bottom" 
         type="source" 
         position={Position.Bottom}
-        className="handler"
+        className="handler -my-2"
       />
       <Handle 
         id="left" 
         type="source" 
         position={Position.Left}
-        className="handler"
+        className="handler -mx-2"
       />
       <Handle 
         id="right" 
         type="source" 
         position={Position.Right}
-        className="handler"
+        className="handler -mx-2"
       />
     </>
   )
 }
 
-export default Square;
+export default Circle;
