@@ -5,24 +5,25 @@ import {
   Background, 
   Connection, 
   ConnectionMode, 
-  Controls,  
+  Controls,   
   ReactFlow, 
   useEdgesState,
-  useNodesState
+  useNodesState,
 } from "reactflow";
 import Square from 'components/nodes/Square';
-import DefaultEdge from 'components/edges/Default';
 import Toolbar from 'components/Toolbar';
 import Circle from 'components/nodes/Circle';
+import Edge from 'components/Edge';
 
 function Playground(){
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [shouldPanOnDrag, setShouldPanOnDrag] = React.useState<boolean>(false);
   const [hasNodeInteraction, setHasNodeInteraction] = React.useState<boolean>(true);
+  const [selectedNode, setSelectedNode] = React.useState<string>('');
 
   const nodeType = React.useMemo(() => ({square: Square, circle: Circle}),[]);
-  const edgeType = React.useMemo(() => ({default: DefaultEdge}),[]);
+  const edgeType = React.useMemo(() => ({default: Edge}),[]);
 
   const onConnect = React.useCallback((connection: Connection) => {
     setEdges((prevEdges) => addEdge(connection, prevEdges));
@@ -34,23 +35,29 @@ function Playground(){
         <ReactFlow 
           nodes={nodes}
           edges={edges}
-          onNodesChange={hasNodeInteraction ? onNodesChange : undefined}
-          onEdgesChange={hasNodeInteraction ? onEdgesChange : undefined}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           connectionMode={ConnectionMode.Loose}
           nodeTypes={nodeType}
           edgeTypes={edgeType}
-          panOnDrag={shouldPanOnDrag}
+          panOnDrag={shouldPanOnDrag} 
+          nodesDraggable={hasNodeInteraction}
+          selectNodesOnDrag={hasNodeInteraction}
+          nodeOrigin={[0.5, 0.5]}
+          deleteKeyCode={['Backspace', 'Delete']}
         >
           <Background/>
           <Controls/>
         </ReactFlow>
 
         <Toolbar 
-          nodes={nodes}
+          selectedNode={selectedNode}
+          setSelectedNode={setSelectedNode}
           setNodes={setNodes}
           setHasNodeInteraction={setHasNodeInteraction}
           setShouldPanOnDrag={setShouldPanOnDrag}
+          hasNodeInteraction={hasNodeInteraction}
         />
       </div>
     </RoomProvider>

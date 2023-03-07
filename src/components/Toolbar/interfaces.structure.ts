@@ -2,7 +2,9 @@ import { Node } from "reactflow";
 
 export interface IToolbarProps{
   setNodes: React.Dispatch<React.SetStateAction<Node[]>>;
-  nodes: Node[];
+  selectedNode: string;
+  hasNodeInteraction: boolean;
+  setSelectedNode: React.Dispatch<React.SetStateAction<string>>;
   setShouldPanOnDrag: React.Dispatch<React.SetStateAction<boolean>>;
   setHasNodeInteraction: React.Dispatch<React.SetStateAction<boolean>>;
 }

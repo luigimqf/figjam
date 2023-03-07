@@ -1,6 +1,6 @@
 import { EdgeProps, getSmoothStepPath } from 'reactflow';
 
-function DefaultEdge({
+function Edge({
   id,
   sourceX,
   sourceY,
@@ -32,4 +32,4 @@ function DefaultEdge({
   );
 }
 
-export default DefaultEdge;
+export default Edge;
