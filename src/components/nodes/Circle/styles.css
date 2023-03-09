@@ -1,3 +1,0 @@
-.handler {
-  @apply bg-blue-500 border-2 border-zinc-500 w-2 h-2 hover:bg-zinc-500 transition active:bg-zinc-500 !important;
-}

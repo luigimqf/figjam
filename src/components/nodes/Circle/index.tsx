@@ -1,7 +1,7 @@
 import React from 'react'
 import { NodeResizer } from "@reactflow/node-resizer";
 import { Handle, Position } from "reactflow";
-import './styles.css';
+import 'pages/Background/styles.css';
 import '@reactflow/node-resizer/dist/style.css';
 
 function Circle({data,selected}:any) {
