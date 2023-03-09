@@ -1,21 +1,30 @@
+import React from 'react'
 import { NodeResizer } from "@reactflow/node-resizer";
 import { Handle, Position } from "reactflow";
-import './styles.css';
+import 'pages/Background/styles.css';
 import '@reactflow/node-resizer/dist/style.css';
 
-function StickyNote({data}:any) {
+function StickyNote({data,selected}:any) {
+  const [isSelected, setIsSelected] = React.useState<boolean>(true);
   return (
     <>
-      <div className="relative">
-        <div className="bg-yellow-200 p-4 rounded-lg shadow-2xl absolute left-0 z-10 w-[200px] h-[200px]">
-          <p className="text-gray-500 opacity-60 font-medium">Add Text</p>
+      <div 
+        className="min-w-[200px] min-h-[200px] w-full h-full p-4 bg-yellow-300 flex-col justify-between items-center"
+        onClick={() => {
+          data.onClick();
+          setIsSelected(!isSelected);
+        }}
+        onMouseEnter={data.onMouseEnter}
+      >
+        <div className="w-full h-4/5"/>
+        <div className="w-full h-1/5">
         </div>
-        <div className="bg-yellow-200 px-4 py-2 rounded-lg shadow-md absolute left-0 -top-2 -right-8 transform rotate-12 w-[200px] h-[200px]"/>
       </div>
       <NodeResizer
         minHeight={200}
         minWidth={200}
-        isVisible={false}
+        isVisible={selected}
+        handleStyle={{width: '15px', height: '15px'}}
       />
       <Handle 
         id="top" 

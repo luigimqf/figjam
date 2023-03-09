@@ -9,4 +9,4 @@ export interface IToolbarProps{
   setHasNodeInteraction: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export type NodesType = 'square' | 'circle' | 'text'
+export type NodesType = 'square' | 'circle' | 'sticky'

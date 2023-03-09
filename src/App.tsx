@@ -1,8 +1,8 @@
-import Playground from "pages/Playground";
+import Background from "pages/Background";
 
 function App() {
   return (
-    <Playground/>
+    <Background/>
   );
 }
 

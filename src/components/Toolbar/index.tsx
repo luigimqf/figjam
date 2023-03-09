@@ -3,7 +3,8 @@ import * as Tool from '@radix-ui/react-toolbar';
 import { IToolbarProps, NodesType } from './interfaces.structure';
 import {AiOutlineDrag as DragIcon} from 'react-icons/ai';
 import {BsCursor as CursorIcon} from 'react-icons/bs';
-import {FiTrash2 as TrashIcon} from 'react-icons/fi';	
+import {FiTrash2 as TrashIcon} from 'react-icons/fi';
+import './styles.css'	
 
 
 function Toolbar({
@@ -38,12 +39,9 @@ function Toolbar({
           position: { x: 0, y: 0 },
           type: type,
           data: {
-            selectedNodeId: selectedNode,
-            onClick: () => setSelectedNode(id),
-            onMouseEnter: () => setSelectedNode(id),
-            type: type
+            label: '',
           },
-          selected: false,
+          selected: true,
         }
       ]
     })
@@ -80,20 +78,20 @@ function Toolbar({
       <div className='w-4/5 h-full flex justify-evenly align-bottom overflow-hidden'>
         <Tool.Button
           onClick={() => addNewNode('square')}
-          className={`w-[90px] h-[90px] border-gray-900 border-[1px] bg-emerald-400 rounded mt-5 hover:-translate-y-3 transition-transform`}
+          className={`shadow w-[90px] h-[90px] drop-shadow-lg bg-emerald-500 rounded mt-5 hover:-translate-y-3 transition-transform`}
         />
         <Tool.Button
           onClick={() => addNewNode('circle')}
-          className='w-[90px] h-[90px] border-gray-900 border-[1px] bg-emerald-400 rounded-full mt-4 hover:-translate-y-3 transition-transform'
+          className='shadow w-[90px] h-[90px] bg-emerald-500 rounded-full mt-4 hover:-translate-y-3 transition-transform'
         />
         <Tool.Button
-          onClick={() => addNewNode('circle')}
+          onClick={() => addNewNode('sticky')}
           className='relative w-[90px] h-[90px] mt-7  hover:-translate-y-3 transition-transform'
         >
-          <div className="bg-yellow-200 p-4 border-gray-900 border-[1px] rounded absolute left-0 -top-2 -right-8 z-10 transform -rotate-3 w-full h-full">
+          <div className="shadow bg-yellow-200 p-4 rounded absolute left-0 -top-2 -right-8 z-10 transform -rotate-3 w-full h-full">
             <p className="text-gray-500 font-regular text-xs transform -rotate-3">Add Text</p>
           </div>
-          <div className="bg-yellow-200 px-4 py-2 border-gray-900 border-[1px] rounded-lg shadow-md absolute left-0 -top-2 -right-8 transform rotate-12 w-full h-full"/>
+          <div className="shadow bg-yellow-200 px-4 py-2 rounded-lg absolute left-0 -top-2 -right-8 transform rotate-12 w-full h-full"/>
         </Tool.Button>
       </div>
 
