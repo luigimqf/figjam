@@ -11,20 +11,19 @@ function Toolbar({
   setNodes,
   selectedNode,
   setSelectedNode,
-  setHasNodeInteraction,
+  setShouldSelectNode,
   setShouldPanOnDrag,
-  hasNodeInteraction
 }:IToolbarProps)
 {
   const [activeTool, setActiveTool] = React.useState<'drag' | 'cursor'>('cursor');
 
   const changeToolHashmap = {
     'drag': () => {
-      setHasNodeInteraction(false);
+      setShouldSelectNode(false);
       setShouldPanOnDrag(true);
     },
     'cursor': () => {
-      setHasNodeInteraction(true);
+      setShouldSelectNode(true);
       setShouldPanOnDrag(false);
     }
   }

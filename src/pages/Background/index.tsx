@@ -20,7 +20,7 @@ function Background(){
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [shouldPanOnDrag, setShouldPanOnDrag] = React.useState<boolean>(false);
-  const [hasNodeInteraction, setHasNodeInteraction] = React.useState<boolean>(true);
+  const [shouldSelectNode, setShouldSelectNode] = React.useState<boolean>(true);
   const [selectedNode, setSelectedNode] = React.useState<string>('');
 
   const nodeType = React.useMemo(() => ({square: Square, circle: Circle, sticky: StickyNote}),[]);
@@ -43,8 +43,8 @@ function Background(){
           nodeTypes={nodeType}
           edgeTypes={edgeType}
           panOnDrag={shouldPanOnDrag} 
-          nodesDraggable={hasNodeInteraction}
-          selectNodesOnDrag={hasNodeInteraction}
+          nodesDraggable={shouldSelectNode}
+          selectNodesOnDrag={shouldSelectNode}
           nodeOrigin={[0.5, 0.5]}
           deleteKeyCode={['Backspace', 'Delete']}
         >
@@ -56,9 +56,8 @@ function Background(){
           selectedNode={selectedNode}
           setSelectedNode={setSelectedNode}
           setNodes={setNodes}
-          setHasNodeInteraction={setHasNodeInteraction}
+          setShouldSelectNode={setShouldSelectNode}
           setShouldPanOnDrag={setShouldPanOnDrag}
-          hasNodeInteraction={hasNodeInteraction}
         />
       </div>
     </RoomProvider>
