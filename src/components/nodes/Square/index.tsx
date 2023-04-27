@@ -9,7 +9,7 @@ function Square({data,selected}:any) {
   return (
     <>
       <div 
-        className="min-w-[200px] min-h-[200px] w-full h-full bg-emerald-400 rounded-xl group" 
+        className="min-w-[200px] min-h-[200px] w-full h-full bg-emerald-500 rounded-xl group" 
         onClick={() => {
           data.onClick();
           setIsSelected(!isSelected);

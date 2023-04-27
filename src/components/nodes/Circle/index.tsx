@@ -9,7 +9,7 @@ function Circle({data,selected}:any) {
   return (
     <>
       <div 
-        className="min-w-[200px] min-h-[200px] w-full h-full bg-emerald-400 rounded-full group" 
+        className="min-w-[200px] min-h-[200px] w-full h-full bg-emerald-500 rounded-full group" 
         onClick={() => {
           data.onClick();
           setIsSelected(!isSelected);

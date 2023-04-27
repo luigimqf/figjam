@@ -4,8 +4,8 @@ import { IToolbarProps, NodesType } from './interfaces.structure';
 import {AiOutlineDrag as DragIcon} from 'react-icons/ai';
 import {BsCursor as CursorIcon} from 'react-icons/bs';
 import {FiTrash2 as TrashIcon} from 'react-icons/fi';
+import {ImTextWidth as TextIcon} from 'react-icons/im';
 import './styles.css'	
-
 
 function Toolbar({
   setNodes,
@@ -49,7 +49,10 @@ function Toolbar({
   }
 
   function deleteNode(){
-    return selectedNode ? setNodes((prevNodes) => prevNodes.filter((node) => !selectedNode.includes(node.id))) : null;
+    return selectedNode  
+    ? 
+    setNodes((prevNodes) => prevNodes.filter((node) => !selectedNode.includes(node.id))) 
+    : null;
   }
 
   function changeActiveTool(tool:'drag' | 'cursor'){
@@ -85,12 +88,14 @@ function Toolbar({
         />
         <Tool.Button
           onClick={() => addNewNode('sticky')}
-          className='relative w-[90px] h-[90px] mt-7  hover:-translate-y-3 transition-transform'
+          className='w-[90px] h-[90px] mt-5  hover:-translate-y-3 transition-transform'
         >
-          <div className="shadow bg-yellow-200 p-4 rounded absolute left-0 -top-2 -right-8 z-10 transform -rotate-3 w-full h-full">
-            <p className="text-gray-500 font-regular text-xs transform -rotate-3">Add Text</p>
+          <div className="shadow bg-yellow-200 p-4 rounded left-0 -top-2 -right-8 z-10 transform -rotate-3 w-full h-full flex justify-center items-center">
+            <TextIcon 
+              size={30}
+              color={'#34495e'}
+            />
           </div>
-          <div className="shadow bg-yellow-200 px-4 py-2 rounded-lg absolute left-0 -top-2 -right-8 transform rotate-12 w-full h-full"/>
         </Tool.Button>
       </div>
 
